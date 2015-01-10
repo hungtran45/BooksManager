@@ -1,0 +1,24 @@
+<%= bootstrap_form_for @category, class: "form-horizontal" do |f| %>
+  
+  <% if @category.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h4><%= pluralize(@category.errors.count, "error") %> prohibited this author from being saved:</h4>
+
+    <ul>
+    <% @category.errors.full_messages.each do |message| %>
+      <li class="lsterror"><span class="glyphicon glyphicon-exclamation-sign"></span> <%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :name, placeholder: "Enter the Category's name" %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => 'btn btn-primary' %> 
+    <%= link_to categories_path, class: 'btn btn-default btn-md' do %>
+      <span class="glyphicon glyphicon-arrow-left"></span> Back
+    <% end %>
+  </div>  
+<% end %>

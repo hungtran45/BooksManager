@@ -1,0 +1,27 @@
+<%= bootstrap_form_for @author, class: "form-horizontal" do |f| %>
+  
+  <% if @author.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h4><%= pluralize(@author.errors.count, "error") %> prohibited this author from being saved:</h4>
+
+    <ul>
+    <% @author.errors.full_messages.each do |message| %>
+      <li class="lsterror"><span class="glyphicon glyphicon-exclamation-sign"></span> <%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :name, placeholder: "Enter the Author's name" %>
+  </div>
+  <div class="field">
+    <%= f.text_field :email, placeholder: "Enter the Author's email" %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => 'btn btn-primary' %> 
+    <%= link_to authors_path, class: 'btn btn-default btn-md' do %>
+      <span class="glyphicon glyphicon-arrow-left"></span> Back
+    <% end %>
+  </div>  
+<% end %>
