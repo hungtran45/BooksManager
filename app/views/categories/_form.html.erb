@@ -2,7 +2,7 @@
   
   <% if @category.errors.any? %>
   <div class="alert alert-danger" role="alert">
-    <h4><%= pluralize(@category.errors.count, "error") %> prohibited this author from being saved:</h4>
+    <h4><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h4>
 
     <ul>
     <% @category.errors.full_messages.each do |message| %>

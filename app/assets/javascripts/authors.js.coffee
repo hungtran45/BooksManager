@@ -5,11 +5,12 @@
 jQuery ->
 	$(".authorTable").dataTable({
 		"info": false,
+		"bLengthChange": false,
 		"aoColumns": [
-      null,
-      { "sWidth": "50%" },
-      { "sWidth": "8%", "sClass": "alignCenter" },
-      { "sWidth": "8%", "sClass": "alignCenter" }
-    ]
+	      null,
+	      { "sWidth": "50%" },
+	      { "sWidth": "8%", "sClass": "alignCenter" },
+	      { "sWidth": "8%", "sClass": "alignCenter" }
+	    ]
 		
 	});

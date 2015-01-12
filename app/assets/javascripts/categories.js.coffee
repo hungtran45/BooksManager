@@ -5,10 +5,10 @@
 jQuery ->
 	$(".categoryTable").dataTable({
 		"info": false,
+		"bLengthChange": false,
 		"aoColumns": [
-      null,
-      { "sWidth": "8%", "sClass": "alignCenter" },
-      { "sWidth": "8%", "sClass": "alignCenter" }
-    ]
-		
+	      null,
+	      { "sWidth": "8%", "sClass": "alignCenter" },
+	      { "sWidth": "8%", "sClass": "alignCenter" }
+	    ],
 	});
