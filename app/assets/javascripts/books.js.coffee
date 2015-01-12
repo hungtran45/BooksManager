@@ -3,14 +3,17 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-	$(".authorTable").dataTable({
+	$(".bookTable").dataTable({
 		"info": false,
 		"bLengthChange": false,
+
 		"aoColumns": [
+	      {"sWidth": "20%" },
 	      null,
-	      { "sWidth": "50%" },
+	      {"sWidth": "10%" },
+	      {"sWidth": "20%" },
 	      { "sWidth": "8%", "sClass": "alignCenter" },
 	      { "sWidth": "8%", "sClass": "alignCenter" }
 	    ]
-		
+
 	});
