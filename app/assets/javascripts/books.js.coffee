@@ -6,14 +6,13 @@ jQuery ->
 	$(".bookTable").dataTable({
 		"info": false,
 		"bLengthChange": false,
-
+		"bSort": true,
 		"aoColumns": [
 	      {"sWidth": "20%" },
 	      null,
-	      {"sWidth": "10%" },
-	      {"sWidth": "20%" },
-	      { "sWidth": "8%", "sClass": "alignCenter" },
-	      { "sWidth": "8%", "sClass": "alignCenter" }
+	      {"sWidth": "10%", "bSearchable": false},
+	      {"sWidth": "20%", "bSortable": false , "bSearchable": false},
+	      { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false, "bSearchable": false },
+	      { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false, "bSearchable": false }
 	    ]
-
 	});
