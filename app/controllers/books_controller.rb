@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    @books = Book.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /books/1
@@ -28,7 +28,8 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
+        format.html { redirect_to action: :index }
+        flash[:notice] = 'Book was successfully created.'
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
@@ -58,6 +59,27 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
       format.json { head :no_content }
+      format.js { render :layout => false }
+    end
+  end
+
+  def destroy_multiple
+    i = 0
+    arr_book = Array.new
+    @books = Book.find(params[:book_ids])
+    @books.each do |book|
+      arr_book[i] = book.title
+      i += 1
+      book.destroy
+    end
+
+    @book_name = arr_book*', '
+
+    respond_to do |format|
+      format.html { redirect_to books_url }
+      flash[:notice] = "Books: " + @book_name.upcase + " was successfully destroyed."
+      format.json { head :no_content }
+      format.js { render :layout => false }
     end
   end
 

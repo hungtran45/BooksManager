@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /categories/1
@@ -28,8 +28,9 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
-        format.json { render :show, status: :created, location: @category }
+        flash[:notice] = "Category was successfully created."
+        format.html { redirect_to action: :index } 
+        format.json { render :show, status: :created, location: @category_path }
       else
         format.html { render :new }
         format.json { render json: @category.errors, status: :unprocessable_entity }
@@ -53,11 +54,12 @@ class CategoriesController < ApplicationController
 
   # DELETE /categories/1
   # DELETE /categories/1.json
-  def destroy
+  def destroy    
     @category.destroy
     respond_to do |format|
       format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
       format.json { head :no_content }
+      format.js { render :layout => false }
     end
   end
 

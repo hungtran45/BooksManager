@@ -4,7 +4,7 @@ class AuthorsController < ApplicationController
   # GET /authors
   # GET /authors.json
   def index
-    @authors = Author.all
+    @authors = Author.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /authors/1
@@ -28,7 +28,8 @@ class AuthorsController < ApplicationController
 
     respond_to do |format|
       if @author.save
-        format.html { redirect_to @author, notice: 'Author was successfully created.' }
+        format.html { redirect_to action: :index }
+        flash[:notice] = 'Author was successfully created.'
         format.json { render :show, status: :created, location: @author }
       else
         format.html { render :new }
@@ -58,6 +59,7 @@ class AuthorsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to authors_url, notice: 'Author was successfully destroyed.' }
       format.json { head :no_content }
+      format.js { render :layout => false }
     end
   end
 

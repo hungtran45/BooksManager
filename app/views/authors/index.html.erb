@@ -23,7 +23,7 @@
             <% end %>
           </td>
           <td>
-            <%= link_to author, method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete", "data-placement" => "bottom"  do %>
+            <%= link_to author, method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete", "data-placement" => "bottom", remote: true, class: 'delete_author'  do %>
             <span class="glyphicon glyphicon-trash"></span>
             <% end %>
           </td>
@@ -31,7 +31,7 @@
         <% end %>
       </tbody>
     </table>
-    <br>
+    <%= will_paginate @authors, renderer: BootstrapPagination::Rails %>
     <%= link_to new_author_path, class: 'btn btn-primary btn-md' do %>
     <span class="glyphicon glyphicon-plus"></span> <span id="new_author">New Author</span>
     <% end %>

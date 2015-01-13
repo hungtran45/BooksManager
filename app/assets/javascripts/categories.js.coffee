@@ -5,10 +5,12 @@
 jQuery ->
 	$(".categoryTable").dataTable({
 		"info": false,
+		"bPaginate": false,
 		"bLengthChange": false,
+		"aaSorting": [],
 		"aoColumns": [
 	      null,
-	      { "sWidth": "8%", "sClass": "alignCenter" },
-	      { "sWidth": "8%", "sClass": "alignCenter" }
+	      { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false },
+	      { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false }
 	    ],
 	});
