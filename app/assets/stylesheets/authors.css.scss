@@ -86,4 +86,16 @@ a:hover{
 	.btn{
 	 	margin: 10px auto;
 	}
+
+	table.table thead .sorting { 
+		background-image: url('sort_both.png') !important ;
+	}
+
+	table.table thead .sorting_asc { 
+		background-image: url('sort_asc.png') !important ;
+	}
+
+	table.table thead .sorting_desc { 
+		background-image: url('sort_desc.png') !important ;
+	}
 }

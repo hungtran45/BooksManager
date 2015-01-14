@@ -64,20 +64,20 @@ class BooksController < ApplicationController
   end
 
   def destroy_multiple
-    i = 0
-    arr_book = Array.new
-    @books = Book.find(params[:book_ids])
-    @books.each do |book|
-      arr_book[i] = book.title
-      i += 1
-      book.destroy
-    end
-
-    @book_name = arr_book*', '
+    @arr_book = Array.new
+    @arr_book = Book.where(:id => params[:book_ids]).pluck(:title)
+    @bookCount = @arr_book.count
+    @arr_book *= ', '
+    
+    Book.where(:id => params[:book_ids]).destroy_all
 
     respond_to do |format|
       format.html { redirect_to books_url }
-      flash[:notice] = "Books: " + @book_name.upcase + " was successfully destroyed."
+      if @bookCount > 1
+        flash[:notice] = "Books: #{@arr_book}  were successfully destroyed."
+      else
+        flash[:notice] = "Book: #{@arr_book}  was successfully destroyed."
+      end
       format.json { head :no_content }
       format.js { render :layout => false }
     end
