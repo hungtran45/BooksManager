@@ -1,0 +1,3 @@
+class EmailAuthorController < ApplicationController
+	
+end

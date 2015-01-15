@@ -1,4 +1,4 @@
-<%= bootstrap_form_for @book, class: "form-horizontal" do |f| %>
+<%= bootstrap_form_for @book, class: "form-horizontal", :html => {:multipart => true } do |f| %>
   
   <% if @book.errors.any? %>
   <div class="alert alert-danger" role="alert">
@@ -23,6 +23,10 @@
   </div>
   <div class="field">
     <%= f.select("author_id", Author.all.collect {|a| [a.name, a.id] }.sort, {prompt: "Choose the Book's author ..."})%>
+  </div>
+
+  <div class="field">
+    <%= f.file_field :photo, class: "form-control"%>
   </div>
 
   <div class="actions">

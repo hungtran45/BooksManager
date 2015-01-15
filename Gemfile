@@ -24,6 +24,10 @@ gem 'rspec-rails'
 gem 'will_paginate', '~> 3.0.5'
 gem 'will_paginate-bootstrap'
 
+#paperclip
+gem "paperclip", "~> 4.2"
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
