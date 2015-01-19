@@ -4,7 +4,10 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    respond_to do |format|
+      format.html
+      format.json { render json: CategoriesDatatable.new(view_context) }
+    end
   end
 
   # GET /categories/1

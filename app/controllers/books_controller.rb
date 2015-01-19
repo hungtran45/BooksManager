@@ -4,7 +4,12 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: BooksDatatable.new(view_context) }
+    end
+
   end
 
   # GET /books/1
@@ -19,6 +24,7 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
+    
   end
 
   # POST /books

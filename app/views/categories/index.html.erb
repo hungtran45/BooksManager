@@ -3,7 +3,7 @@
     Listing Categories
   </div>
   <div class="panel-body">    
-    <table class="table table-striped table-hover categoryTable">
+    <table class="table table-striped table-hover categoryTable display" data-source="<%= categories_url(format: "json") %>">
       <thead>
         <tr>
           <th>Name</th>
@@ -12,24 +12,8 @@
         </tr>
       </thead>
       <tbody>
-        <% @categories.each do |category| %>
-        <tr>
-          <td><%= link_to category.name, category, class: "categoryName", title: "View " + category.name + " details", "data-placement" => "bottom" %></td>
-          <td>
-            <%= link_to edit_category_path(category), title: "Edit", "data-placement" => "bottom" do %>
-            <span class="glyphicon glyphicon-pencil"></span>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to category, method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete", "data-placement" => "bottom", remote: true, class: 'delete_category'  do %>
-            <span class="glyphicon glyphicon-trash"></span>
-            <% end %>
-          </td>
-        </tr>
-        <% end %>
       </tbody>
     </table>
-    <%= will_paginate @categories, renderer: BootstrapPagination::Rails %>
     <%= link_to new_category_path, class: 'btn btn-primary btn-md' do %>
       <span class="glyphicon glyphicon-plus"></span> <span id="new_category">New Category</span>
     <% end %>

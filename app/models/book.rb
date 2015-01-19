@@ -10,14 +10,13 @@ class Book < ActiveRecord::Base
   					:path => ":rails_root/public/assets/books/:id/:style/:basename.:extension",
   					:default_url => "no-image_:style.png"
 
-	validates_attachment_presence :photo
 	validates_attachment_size :photo, :less_than => 2.megabytes
 	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
 
 	validates :title, presence: true, uniqueness: true, length: {maximum: 100,
 		too_long: '%{count} characters is the maximum allowed.'}
-	validates :category, :author, presence: {message: "must have value"} 
-	validates :year, inclusion: { in: 1900..Date.today.year, message:  "should be a year from 1900 to #{Date.today.year}"}
+	validates :category, :author, :year, presence: {message: "must have value"} 
+	validates :year, inclusion: { in: 1900..Date.today.year, message:  "should be a year from 1900 to #{Date.today.year}"}, :if => :year?
 
 	private
 
