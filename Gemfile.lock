@@ -30,6 +30,7 @@ GEM
     arel (5.0.1.20140414130214)
     autoprefixer-rails (4.0.2.2)
       execjs
+    bcrypt (3.1.9)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     bootstrap_form (2.2.0)
@@ -45,6 +46,13 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    devise (3.4.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.2)
@@ -69,6 +77,7 @@ GEM
     mime-types (2.4.3)
     minitest (5.5.0)
     multi_json (1.10.1)
+    orm_adapter (0.5.0)
     paperclip (4.2.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -96,6 +105,8 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    responders (1.1.2)
+      railties (>= 3.2, < 4.2)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
@@ -142,6 +153,8 @@ GEM
       json (>= 1.8.0)
     validates_email_format_of (1.6.1)
       i18n
+    warden (1.2.3)
+      rack (>= 1.0)
     will_paginate (3.0.7)
     will_paginate-bootstrap (1.0.1)
       will_paginate (>= 3.0.3)
@@ -154,6 +167,7 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap_form
   coffee-rails (~> 4.0.0)
+  devise
   jbuilder (~> 2.0)
   jquery-datatables-rails
   jquery-rails

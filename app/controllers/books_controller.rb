@@ -35,7 +35,7 @@ class BooksController < ApplicationController
     respond_to do |format|
       if @book.save
         format.html { redirect_to action: :index }
-        flash[:notice] = 'Book was successfully created.'
+        flash[:success] = 'Book was successfully created.'
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
@@ -49,7 +49,8 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)        
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
+        format.html { redirect_to @book}
+        flash[:success] = 'Book was successfully updated.'
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit }
@@ -63,7 +64,8 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
+      format.html { redirect_to books_url }
+      flash[:success] = 'Book was successfully destroyed.'
       format.json { head :no_content }
       format.js { render :layout => false }
     end
@@ -79,14 +81,23 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to books_url }
-      if @bookCount > 1
-        flash[:notice] = "Books: #{@arr_book}  were successfully destroyed."
+      if @bookCount < 1
+        flash[:alert] = "Please select book(s) to delete."
       else
-        flash[:notice] = "Book: #{@arr_book}  was successfully destroyed."
+        if @bookCount == 1
+          flash[:success] = "Book: #{@arr_book}  was successfully destroyed."
+        else
+          flash[:success] = "Books: #{@arr_book}  were successfully destroyed."
+        end
       end
+      
       format.json { head :no_content }
       format.js { render :layout => false }
     end
+  end
+
+  def view_by_category
+    
   end
 
   private

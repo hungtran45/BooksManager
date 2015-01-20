@@ -10,3 +10,62 @@
 		background-color: #DBd5D0;
 	}
 }
+
+.navbar-default {
+	.navbar-nav {
+
+		#msgLogin{
+			font-size: 15px;
+			padding-top: 15px;
+			padding-bottom: 15px;
+		}
+	}
+
+	.navbar-nav > li > a{
+		font-size: 15px;
+	}
+}
+.form-signin, .form-signup, .form-forgotPassword {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+
+	.form-signin-heading, .checkbox {
+	  margin-bottom: 10px;
+	}
+	.checkbox {
+	  font-weight: normal;
+	}
+	.form-control {
+	  position: relative;
+	  height: auto;
+	  -webkit-box-sizing: border-box;
+	     -moz-box-sizing: border-box;
+	          box-sizing: border-box;
+	  padding: 10px;
+	  font-size: 16px;
+	}
+	.form-control:focus {
+	  z-index: 2;
+	}
+	input[type="email"] {
+	  margin-bottom: -1px;
+	  border-bottom-right-radius: 0;
+	  border-bottom-left-radius: 0;
+	}
+	input[type="password"] {
+	  margin-bottom: 10px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+	}
+
+	.sharedLink{
+		a:hover{
+			background-color: white;
+		}
+	}
+}
+
+.form-forgotPassword {
+	max-width: 550px
+}

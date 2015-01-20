@@ -8,11 +8,12 @@
 </head>
 <body>
 	<%= render 'shared/navigation' %>
+	<% if user_signed_in? %>
 	<div id="main-container" class="container" >
 		<div class="row">
 			<div class="col-xs-11">
 				<% flash.each do |name, msg|%>
-					<%= content_tag :div, msg, class: "alert alert-success" %>
+					<%= content_tag :div, msg, class: "#{flash_class(name)}" %>
 				<% end %>	
 			</div>
 			<div class="row">
@@ -31,7 +32,10 @@
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
+	<% else %>
+		<%= yield %>
+	<% end %>	
   <%= render 'shared/footer' %>
 </body>
 </html>
