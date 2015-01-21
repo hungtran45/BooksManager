@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :check_role, only: [:edit, :new, :destroy, :destroy_multiple]
 
   # GET /books
   # GET /books.json
@@ -7,7 +9,8 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: BooksDatatable.new(view_context) }
+      #add current_user de dung cho initialize cua books_datatable
+      format.json { render json: BooksDatatable.new(current_user, view_context) }
     end
 
   end
@@ -109,5 +112,11 @@ class BooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:title, :year, :category_id, :author_id, :photo)
+    end
+
+    def check_role
+      unless (current_user.present? && current_user.has_role?(:admin))
+        redirect_to books_path
+      end
     end
 end

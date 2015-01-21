@@ -1,12 +1,14 @@
 class CategoriesController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :check_role, only: [:new, :edit, :destroy]
 
   # GET /categories
   # GET /categories.json
   def index
     respond_to do |format|
       format.html
-      format.json { render json: CategoriesDatatable.new(view_context) }
+      format.json { render json: CategoriesDatatable.new(current_user, view_context) }
     end
   end
 
@@ -77,5 +79,11 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name)
+    end
+
+    def check_role
+      unless (current_user.present? && current_user.has_role?(:admin))
+        redirect_to categories_path
+      end
     end
 end

@@ -1,8 +1,9 @@
 class CategoriesDatatable
   delegate :params, :link_to, :edit_category_path, to: :@view
 
-  def initialize(view)
+  def initialize(user, view)
     @view = view
+    @user = user
   end
 
   def as_json(options = {})
@@ -18,13 +19,22 @@ class CategoriesDatatable
 private
 
   def data
-    categories.map do |category|
+    if @user.has_role? :admin
+      categories.map do |category|
       [
         link_to(category.name, category, class: 'categoryName', title: "View " + category.name + " details", "data-placement" => "bottom"),
         link_to('', edit_category_path(category), title: "Edit", "data-placement" => "bottom", class: "glyphicon glyphicon-pencil"),
         link_to('',category, method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete", "data-placement" => "bottom", remote: true, class: 'delete_category glyphicon glyphicon-trash') 
       ]
+      end
+    else
+      categories.map do |category|
+      [
+        link_to(category.name, category, class: 'categoryName', title: "View " + category.name + " details", "data-placement" => "bottom") 
+      ]
+      end
     end
+    
   end
 
   def categories

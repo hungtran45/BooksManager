@@ -1,8 +1,9 @@
 class AuthorsDatatable
   delegate :params, :link_to, :edit_author_path, to: :@view
 
-  def initialize(view)
+  def initialize(user, view)
     @view = view
+    @user = user
   end
 
   def as_json(options = {})
@@ -18,14 +19,24 @@ class AuthorsDatatable
 private
 
   def data
-    authors.map do |author|
+    if @user.has_role? :admin
+      authors.map do |author|
       [
         link_to(author.name, author, class: 'authorName', title: "View " + author.name + " details", "data-placement" => "bottom"),
         author.email,
         link_to('', edit_author_path(author), title: "Edit", "data-placement" => "bottom", class: "glyphicon glyphicon-pencil"),
         link_to('',author, method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete", "data-placement" => "bottom", remote: true, class: 'delete_author glyphicon glyphicon-trash') 
       ]
+      end
+    else
+      authors.map do |author|
+      [
+        link_to(author.name, author, class: 'authorName', title: "View " + author.name + " details", "data-placement" => "bottom"),
+        author.email
+      ]
+      end
     end
+    
   end
 
   def authors

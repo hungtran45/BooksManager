@@ -8,15 +8,53 @@
         <tr>
           <th>Name</th>
           <th>Email</th>
-          <th>Edit</th>
-          <th>Delete</th>
+          <% if current_user.has_role? :admin %>
+            <th>Edit</th>
+            <th>Delete</th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
       </tbody>
     </table>
-    <%= link_to new_author_path, class: 'btn btn-primary btn-md' do %>
-    <span class="glyphicon glyphicon-plus"></span> <span id="new_author">New Author</span>
+    <% if current_user.has_role? :admin %>
+      <%= link_to new_author_path, class: 'btn btn-primary btn-md' do %>
+      <span class="glyphicon glyphicon-plus"></span> <span id="new_author">New Author</span>
+      <% end %>
     <% end %>
   </div>
 </div>
+
+<% if current_user.has_role? :admin %>
+  <script>
+    $(".authorTable").dataTable({
+      info: false,
+      bProcessing: true,
+      bServerSide: true,
+      sAjaxSource: $('.authorTable').data('source'),
+      bLengthChange: false,
+      aaSorting: [[0, 'asc']],
+      aoColumns: [
+          null,
+          { "sWidth": "50%" },
+          { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false },
+          { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false }
+        ]
+    });
+  </script>
+<% else %>
+  <script>
+    $(".authorTable").dataTable({
+      info: false,
+      bProcessing: true,
+      bServerSide: true,
+      sAjaxSource: $('.authorTable').data('source'),
+      bLengthChange: false,
+      aaSorting: [[0, 'asc']],
+      aoColumns: [
+          null,
+          { "sWidth": "50%" }
+        ]
+    });
+  </script>
+<% end %>

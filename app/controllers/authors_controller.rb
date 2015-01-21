@@ -1,12 +1,14 @@
 class AuthorsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_author, only: [:show, :edit, :update, :destroy]
+  before_action :check_role, only: [:new, :edit, :destroy]
 
   # GET /authors
   # GET /authors.json
   def index
     respond_to do |format|
       format.html
-      format.json { render json: AuthorsDatatable.new(view_context) }
+      format.json { render json: AuthorsDatatable.new(current_user, view_context) }
     end
   end
 
@@ -77,5 +79,11 @@ class AuthorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def author_params
       params.require(:author).permit(:name, :email)
+    end
+
+    def check_role
+      unless (current_user.present? && current_user.has_role?(:admin))
+        redirect_to authors_path
+      end
     end
 end

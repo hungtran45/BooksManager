@@ -29,6 +29,8 @@ gem "paperclip", "~> 4.2"
 
 #devise
 gem "devise"
+gem "cancan"
+gem "rolify"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
