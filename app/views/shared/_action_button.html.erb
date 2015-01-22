@@ -1,12 +1,12 @@
 <div class="btnAction">
 	<%= link_to new_author_path, class: 'btn btn-primary btn-md' do %>
-		<span class="glyphicon glyphicon-plus"></span> <span id="new_author">New Author</span>
+		<span class="glyphicon glyphicon-plus"></span> <span id="new_author"><%= t('.new_author')%></span>
 	<% end %>
 	<%= link_to new_category_path, class: 'btn btn-primary btn-md' do %>
-		<span class="glyphicon glyphicon-plus"></span> <span id="new_category">New Category</span>
+		<span class="glyphicon glyphicon-plus"></span> <span id="new_category"><%= t('.new_category')%></span>
 	<% end %>
 	<%= link_to new_book_path, class: 'btn btn-primary btn-md' do %>
-		<span class="glyphicon glyphicon-plus"></span> <span id="new_book">New Book</span>
+		<span class="glyphicon glyphicon-plus"></span> <span id="new_book"><%= t('.new_book')%></span>
 	<% end %>
-	<%= submit_tag "Delete Selected", class: 'btnDelete btn btn-primary', remote: true, data: { confirm: 'Are you sure?' } %>
+	<%= submit_tag t('.delete_selected'), class: 'btnDelete btn btn-primary', remote: true, data: { confirm: 'Are you sure?' } %>
 </div>

@@ -13,26 +13,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.text_field :title, placeholder: "Enter the Book's title" %>
+    <%= f.label t('.title'), class: 'control-label'%>
+    <%= f.text_field :title, placeholder: "Enter the Book's title", hide_label: true %>
   </div>
   <div class="field">
-    <%= f.select :year, (1900..(Time.zone.now.year)).sort.reverse, {prompt: 'Choose the year ...'} %>
+    <%= f.select :year, (1900..(Time.zone.now.year)).sort.reverse, { label: t('.year') }, {prompt: 'Choose the year ...'} %>
   </div>
   <div class="field">
-    <%= f.select("category_id", Category.all.collect {|c| [c.name, c.id] }.sort, {prompt: "Choose the Book's category ..."}) %>
+    <%= f.select("category_id", Category.all.collect {|c| [c.name, c.id] }.sort, { label: t('.category') }, {prompt: "Choose the Book's category ..."}) %>
   </div>
   <div class="field">
-    <%= f.select("author_id", Author.all.collect {|a| [a.name, a.id] }.sort, {prompt: "Choose the Book's author ..."})%>
+    <%= f.select("author_id", Author.all.collect {|a| [a.name, a.id] }.sort, { label: t('.author') }, {prompt: "Choose the Book's author ..."})%>
   </div>
 
   <div class="field">
-    <%= f.file_field :photo, class: "form-control"%>
+    <%= f.label t('.photo'), class: 'control-label'%>
+    <%= f.file_field :photo, class: "form-control", hide_label: true%>
   </div>
 
   <div class="actions">
-    <%= f.submit :class => 'btn btn-primary' %> 
+    <%= f.submit t('.create_book'), :class => 'btn btn-primary' %> 
     <%= link_to books_path, class: 'btn btn-default btn-md' do %>
-      <span class="glyphicon glyphicon-arrow-left"></span> Back
+      <span class="glyphicon glyphicon-arrow-left"></span> <%= t('.back')%>
     <% end %>
   </div>  
 <% end %>

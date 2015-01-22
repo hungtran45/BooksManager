@@ -1,13 +1,13 @@
 <div class="sidebar-offcanvas" id="sidebar" role="navigation">
   <ul class="nav">
     <li class="<%= 'active' if params[:controller] == 'books' %>">
-      <%= link_to 'Home', books_path %>
+      <%= link_to t('.home'), books_path %>
     </li>
     <li class="<%= 'active' if params[:controller] == 'authors' %>">
-      <%= link_to 'Authors', authors_path %>
+      <%= link_to t('.authors'), authors_path %>
     </li>
     <li class="<%= 'active' if params[:controller] == 'categories' %>">
-      <%= link_to 'Categories', categories_path %>
+      <%= link_to t('.categories'), categories_path %>
     </li>
   </ul>
 </div>

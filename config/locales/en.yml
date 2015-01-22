@@ -20,4 +20,52 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+ books:
+  index:
+   list_book: "Listing Books"
+   author: "Author"
+   title: "Title"
+   year: "Year"
+   category: "Category"
+   select: "Select"
+  new:
+   title: "New Book"
+  edit:
+   title: "Editing book"
+  form:
+   title: "Title"
+   title_placeholer: "Enter the Book's title"
+   year: "Year"
+   year_prompt: "Choose the year ..."
+   category: "Category"
+   category_prompt: "Choose the Book's category ..."
+   author: "Author"
+   author_prompt: "Choose the Book's author ..."
+   photo: "Photo"
+   create_book: "Create Book"
+   back: "Back"
+ shared:
+  menu:
+   home: "Home"
+   authors: "Authors"
+   categories: "Categories"
+  navigation:
+   title: "Books Manager"
+   login_as: "Logged in as"
+   edit_profile: "Edit profile"
+   logout: "Logout"
+   login: "Login"
+   sign_up: "Sign up"
+  action_button:
+   new_author: "New Author"
+   new_category: "New Category"
+   new_book: "New Book"
+   delete_selected: "Delete Selected"
+  footer:
+   copyright: "Copyright © 2015 Books Manager"
+   larion_website: "Larion.com"
+ layouts:
+  application:
+   title: "Books Manager"
+   menu: "Menu"
+
