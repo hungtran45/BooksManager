@@ -31,10 +31,11 @@ en:
   new:
    title: "New Book"
   edit:
-   title: "Editing book"
+   edit_book: "Editing book"
   form:
+   error_msg: "prohibited this book from being saved:"
    title: "Title"
-   title_placeholer: "Enter the Book's title"
+   title_placeholder: "Enter the Book's title"
    year: "Year"
    year_prompt: "Choose the year ..."
    category: "Category"
@@ -44,13 +45,22 @@ en:
    photo: "Photo"
    create_book: "Create Book"
    back: "Back"
+  show:
+   book_details: "Book's Details"
+   title: "Title:"
+   year: "Year:"
+   category: "Category:"
+   author: "Author:"
+   image: "Image:"
+   edit: "Edit"
+   back: "Back"
  shared:
   menu:
    home: "Home"
    authors: "Authors"
    categories: "Categories"
   navigation:
-   title: "Books Manager"
+   book_manager: "Books Manager"
    login_as: "Logged in as"
    edit_profile: "Edit profile"
    logout: "Logout"
@@ -68,4 +78,50 @@ en:
   application:
    title: "Books Manager"
    menu: "Menu"
-
+ authors:
+  index:
+   list_author: "Listing Authors"
+   name: "Name"
+   email: "Email"
+   edit: "Edit"
+   delete: "Delete"
+   new_author: "New Author"
+  show:
+   author_details: "Author's Details"
+   name: "Name:"
+   email: "Email:"
+   edit: "Edit"
+   back: "Back"
+  form:
+   error_msg: "prohibited this author from being saved:"
+   name: "Name"
+   name_placeholder: Enter the Author's name"
+   email: "Email"
+   email_placeholder: "Enter the Author's email"
+   create_author: "Create Author"
+  edit:
+   edit_author: "Editing Author"
+  new:
+   new_author: "New author"
+ categories:
+  index:
+   list_categories: "Listing Categories"
+   name: "Name"
+   edit: "Edit"
+   delete: "Delete"
+   new_category: "New Category"
+  show:
+   category_details: "Category's Details"
+   name: "Name: "
+   edit: "Edit"
+   back: "Back"
+  form:
+   error_msg: "prohibited this author from being saved:"
+   name: "Name"
+   name_placeholder: "Enter the Category's name"
+   create_category: "Create Category"
+   back: "Back"
+  edit:
+   edit_category: "Editing Category"
+  new:
+   new_category: "New category"

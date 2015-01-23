@@ -2,7 +2,7 @@
   
   <% if @category.errors.any? %>
   <div class="alert alert-danger" role="alert">
-    <h4><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h4>
+    <h4><%= pluralize(@category.errors.count, "error") %> <%= t('.error_msg')%></h4>
 
     <ul>
     <% @category.errors.full_messages.each do |message| %>
@@ -13,12 +13,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.text_field :name, placeholder: "Enter the Category's name" %>
+    <%= f.label t('.name'), class: 'control-label'%>
+    <%= f.text_field :name, placeholder: t('.name_placeholder'), hide_label: true %>
   </div>
   <div class="actions">
-    <%= f.submit :class => 'btn btn-primary' %> 
+    <%= f.submit t('.create_category'), :class => 'btn btn-primary' %> 
     <%= link_to categories_path, class: 'btn btn-default btn-md' do %>
-      <span class="glyphicon glyphicon-arrow-left"></span> Back
+      <span class="glyphicon glyphicon-arrow-left"></span> <%= t('.back')%>
     <% end %>
   </div>  
 <% end %>

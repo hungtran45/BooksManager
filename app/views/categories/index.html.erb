@@ -1,15 +1,15 @@
 <div class="panel panel-primary listCategory">
   <div class="panel-heading">
-    Listing Categories
+    <%= t('.list_categories')%>
   </div>
   <div class="panel-body">    
     <table class="table table-striped table-hover categoryTable display" data-source="<%= categories_url(format: "json") %>">
       <thead>
         <tr>
-          <th>Name</th>
+          <th><%= t('.name')%></th>
           <% if current_user.has_role? :admin %>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th><%= t('.edit')%></th>
+            <th><%= t('.delete')%></th>
           <% end %>
         </tr>
       </thead>
@@ -18,7 +18,7 @@
     </table>
     <% if current_user.has_role? :admin %>
       <%= link_to new_category_path, class: 'btn btn-primary btn-md' do %>
-        <span class="glyphicon glyphicon-plus"></span> <span id="new_category">New Category</span>
+        <span class="glyphicon glyphicon-plus"></span> <span id="new_category"><%= t('.new_category')%></span>
       <% end %>
     <% end %>
   </div>

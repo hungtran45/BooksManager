@@ -1,24 +1,27 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :books do
-    collection do
-      delete 'destroy_multiple'
+  scope "/:locale", locale: /#{I18n.available_locales.join('|')}/ do
+    devise_for :users
+    resources :books do
+      collection do
+        delete 'destroy_multiple'
+      end
     end
-  end
 
 
-  resources :categories
+    resources :categories
 
-  resources :authors
+    resources :authors
 
-  resources :email_author do 
-    collection do
-      
+    resources :email_author do 
+      collection do
+        
+      end
     end
+
+    root to: 'books#index'
   end
-
-  root to: 'books#index'
-
+  get '*path', to: redirect("/#{I18n.default_locale}/%{path}")
+  get '', to: redirect("/#{I18n.default_locale}")
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="navbar-header">			
 	      <%= link_to books_path, :class => 'navbar-brand' do %>
-	      	<span class="glyphicon glyphicon-home"></span> <%= t('.title')%>
+	      	<span class="glyphicon glyphicon-home"></span> <%= t('.book_manager')%>
 	      <% end %>
 		</div>
 		<div class="collapse navbar-collapse">
@@ -16,6 +16,10 @@
 				<li><%= link_to t('.sign_up'), new_user_registration_path %></li>
 	      	<% end %>
 	      </ul>
+	      <div class="nav navbar-nav flag">
+	      	<%= link_to image_tag("en.png", :border => 0, size: "24x24"), locale: "en"%>
+	      	<%= link_to image_tag("vi.png", :border => 0, size: "24x24"), locale: "vi"%>
+	      </div>
 	    </div>
 	</div>
 </nav>

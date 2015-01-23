@@ -8,6 +8,7 @@
 Author.delete_all
 Category.delete_all
 Book.delete_all
+User.delete_all
 
 Author.create(name: 'Adam', email: 'Adam@gmail.com')
 Author.create(name: 'Michael', email: 'Michael@gmail.com')
@@ -18,3 +19,7 @@ Category.create(name: 'Sports')
 Category.create(name: 'Musics')
 Category.create(name: 'IT')
 Category.create(name: 'Animals')
+
+admin = User.create(email: "admin@gmail.com", password: "123456")
+admin.add_role "admin"
+

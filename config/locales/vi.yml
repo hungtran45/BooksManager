@@ -1,0 +1,129 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+vi:
+ books:
+  index:
+   list_book: "Danh sách"
+   author: "Tác giả"
+   title: "Tên"
+   year: "Năm"
+   category: "Thể loại"
+   select: "Chọn"
+  new:
+   title: "Thêm sách mới"
+  edit:
+   edit_book: "Chỉnh sửa sách"
+  form:
+   error_msg: "prohibited this book from being saved:"
+   title: "Tên"
+   title_placeholder: "Nhập tên sách..."
+   year: "Năm"
+   year_prompt: "Chọn năm xuất bản ..."
+   category: "Thể loại"
+   category_prompt: "Chọn thể loại ..."
+   author: "Tác giả"
+   author_prompt: "Chọn tác giả ..."
+   photo: "Hình ảnh"
+   create_book: "Thêm sách mới"
+   back: "Trở lại"
+  show:
+   book_details: "Thông tin sách"
+   title: "Tên:"
+   year: "Năm xuất bản:"
+   category: "Thể loại:"
+   author: "Tác giả:"
+   image: "Hình ảnh:"
+   edit: "Chỉnh sửa"
+   back: "Trở lại"
+ shared:
+  menu:
+   home: "Trang chủ"
+   authors: "Tác giả"
+   categories: "Thể loại"
+  navigation:
+   book_manager: "Books Manager"
+   login_as: "Chào mừng "
+   edit_profile: "Sửa thông tin"
+   logout: "Đăng xuất"
+   login: "Đăng nhập"
+   sign_up: "Đăng ký"
+  action_button:
+   new_author: "Thêm tác giả"
+   new_category: "Thêm thể loại"
+   new_book: "Thêm sách mới"
+   delete_selected: "Xóa sách được chọn"
+  footer:
+   copyright: "Copyright © 2015 Books Manager"
+   larion_website: "Larion.com"
+ layouts:
+  application:
+   title: "Quản lý sách"
+   menu: "Quản lý"
+ authors:
+  index:
+   list_author: "Danh sách tác giả"
+   name: "Tên tác giả"
+   email: "Email"
+   edit: "Chỉnh sửa"
+   delete: "Xóa"
+   new_author: "Thêm tác giả"
+  show:
+   author_details: "Thông tin tác giả"
+   name: "Tên tác giả:"
+   email: "Email:"
+   edit: "Chỉnh sửa"
+   back: "Trở lại"
+  form:
+   error_msg: "prohibited this author from being saved:"
+   name: "Tên tác giả"
+   name_placeholder: "Nhập tên tác giả"
+   email: "Email"
+   email_placeholder: "Nhập địa chỉ email"
+   create_author: "Thêm tác giả"
+  edit:
+   edit_author: "Chỉnh sửa thông tin tác giả"
+  new:
+   new_author: "Thêm tác giả"
+ categories:
+  index:
+   list_categories: "Danh sách thể loại"
+   name: "Tên thể loại"
+   edit: "Chỉnh sửa"
+   delete: "Xóa"
+   new_category: "Thêm thể loại"
+  show:
+   category_details: "Thông tin thể loại"
+   name: "Tên thể loại: "
+   edit: "Chỉnh sửa"
+   back: "Trở lại"
+  form:
+   error_msg: "prohibited this author from being saved:"
+   name: "Tên thể loại"
+   name_placeholder: "Nhập tên thể loại"
+   create_category: "Thêm thể loại"
+   back: "Trở lại"
+  edit:
+   edit_category: "Chỉnh sửa thông tin thể loại"
+  new:
+   new_category: "Thêm thể loại mới"
+
+
