@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   scope "/:locale", locale: /#{I18n.available_locales.join('|')}/ do
     devise_for :users
+
     resources :books do
       collection do
         delete 'destroy_multiple'
+        get 'view_by_category'
       end
     end
-
 
     resources :categories
 

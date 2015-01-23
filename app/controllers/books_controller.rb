@@ -100,7 +100,11 @@ class BooksController < ApplicationController
   end
 
   def view_by_category
-    
+    respond_to do |format|
+      format.html
+      #add current_user de dung cho initialize cua books_datatable
+      format.json { render json: AbcDatatable.new(current_user, view_context) }
+    end
   end
 
   private

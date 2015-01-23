@@ -7,6 +7,7 @@
     <% if current_user.has_role? :admin %>
       <%= render 'shared/action_button' %>
     <% end %>
+    <input id="categoy_name" type="hidden">
     <table class="table table-striped table-hover table-responsive table-bordered bookTable display" data-source="<%= books_url(format: "json") %>">
       <thead>
         <tr>
@@ -29,6 +30,18 @@
 
 <% if current_user.has_role? :admin %>
   <script>
+    function renderCategory(data){
+        return '<span class="filter_category_name">'+data+'</span>';
+      }
+      click_filter = function(){
+        $('.filter_category_name').click(function(){
+          category_name = $(this).text();
+          if(category_name != ""){
+            $("#categoy_name").val(categoy_name);
+            $(".bookTable").dataTable().fnReloadAjax();
+          }
+        })
+      }
       $(".bookTable").dataTable({
         info: false,
         bProcessing: true,
@@ -40,11 +53,15 @@
             {"sWidth": "20%", "bSortable": false },
             null,
             {"sWidth": "10%", "bSearchable": false},
-            {"sWidth": "20%", "bSortable": false , "bSearchable": false},
+            {"sWidth": "20%", "bSortable": false , "bSearchable": false, "mRender": renderCategory},
             { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false, "bSearchable": false },
             { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false, "bSearchable": false }
-          ]
+          ],
+        "fnServerParams": function ( aoData ) {
+          aoData.push( { "name": "category_name", "value": $('#categoy_name').val() } );
+        }
         });
+      
   </script>
   <% else %>
   <script >

@@ -6,7 +6,3 @@ jQuery ->
 	$('.chxBook').click ->
 		$('.btnDelete')
 			.attr("disabled", !$('.chxBook').is(":checked"))
-
-
-	$('.chxBook').click ->
-		alert('asd')
