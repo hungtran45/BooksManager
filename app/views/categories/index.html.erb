@@ -7,10 +7,8 @@
       <thead>
         <tr>
           <th><%= t('.name')%></th>
-          <% if current_user.has_role? :admin %>
-            <th><%= t('.edit')%></th>
-            <th><%= t('.delete')%></th>
-          <% end %>
+          <th><%= t('.edit')%></th>
+          <th><%= t('.delete')%></th>
         </tr>
       </thead>
       <tbody>
@@ -23,34 +21,3 @@
     <% end %>
   </div>
 </div>
-<% if current_user.has_role? :admin %>
-  <script>
-    $(".categoryTable").dataTable({
-      info: false,
-      bProcessing: true,
-      bServerSide: true,
-      sAjaxSource: $('.categoryTable').data('source'),
-      bLengthChange: false,
-      aaSorting: [[0, 'asc']],
-      aoColumns: [
-          null,
-          { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false },
-          { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false }
-        ]
-    });
-  </script>
-<% else %>
-  <script>
-    $(".categoryTable").dataTable({
-      info: false,
-      bProcessing: true,
-      bServerSide: true,
-      sAjaxSource: $('.categoryTable').data('source'),
-      bLengthChange: false,
-      aaSorting: [[0, 'asc']], 
-      aoColumns: [
-          null
-        ]
-    });
-  </script>
-<% end %>

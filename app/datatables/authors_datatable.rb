@@ -32,7 +32,9 @@ private
       authors.map do |author|
       [
         link_to(author.name, author, class: 'authorName', title: "View " + author.name + " details", "data-placement" => "bottom"),
-        author.email
+        author.email,
+        "",
+        ""
       ]
       end
     end

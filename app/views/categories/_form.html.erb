@@ -17,7 +17,7 @@
     <%= f.text_field :name, placeholder: t('.name_placeholder'), hide_label: true %>
   </div>
   <div class="actions">
-    <%= f.submit t('.create_category'), :class => 'btn btn-primary' %> 
+    <%= f.submit :class => 'btn btn-primary' %> 
     <%= link_to categories_path, class: 'btn btn-default btn-md' do %>
       <span class="glyphicon glyphicon-arrow-left"></span> <%= t('.back')%>
     <% end %>

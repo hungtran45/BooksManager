@@ -21,11 +21,10 @@ private
     if @user.has_role? :admin
       books.map do |book|
       [
-        link_to(book.author.name, book.author, class: "bookName"),
+        book.author.name,
         link_to(book.title, book, class: "bookName", title: "View " + book.title + " details", "data-placement" => "bottom"),
         book.year.to_i,
-        # link_to(book.category.name, book.category, class: "bookName"),
-        book.category.name,
+        link_to(book.category.name, book.category, class: "bookName"),
         check_box_tag('book_ids[]', book.id, false, class: 'chxBook'),
         link_to('',book, method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete", "data-placement" => "bottom", remote: true, class: 'delete_book glyphicon glyphicon-trash') 
         
@@ -34,10 +33,12 @@ private
     else
       books.map do |book|
       [
-        link_to(book.author.name, book.author, class: "bookName"),
+        book.author.name,
         link_to(book.title, book, class: "bookName", title: "View " + book.title + " details", "data-placement" => "bottom"),
         book.year.to_i,
-        link_to(book.category.name, book.category, class: "bookName")
+        link_to(book.category.name, book.category, class: "bookName"),
+        "",
+        ""
       ]
     end
     end
@@ -72,9 +73,5 @@ private
 
   def sort_direction
     params[:sSortDir_0] == "desc" ? "desc" : "asc"
-  end
-
-  def search_book_by_category
-    puts "laksdjalksdj"
   end
 end

@@ -8,10 +8,8 @@
         <tr>
           <th><%= t('.name')%></th>
           <th><%= t('.email')%></th>
-          <% if current_user.has_role? :admin %>
-            <th><%= t('.edit')%></th>
-            <th><%= t('.delete')%></th>
-          <% end %>
+          <th><%= t('.edit')%></th>
+          <th><%= t('.delete')%></th>
         </tr>
       </thead>
       <tbody>
@@ -24,37 +22,3 @@
     <% end %>
   </div>
 </div>
-
-<% if current_user.has_role? :admin %>
-  <script>
-    $(".authorTable").dataTable({
-      info: false,
-      bProcessing: true,
-      bServerSide: true,
-      sAjaxSource: $('.authorTable').data('source'),
-      bLengthChange: false,
-      aaSorting: [[0, 'asc']],
-      aoColumns: [
-          null,
-          { "sWidth": "50%" },
-          { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false },
-          { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false }
-        ]
-    });
-  </script>
-<% else %>
-  <script>
-    $(".authorTable").dataTable({
-      info: false,
-      bProcessing: true,
-      bServerSide: true,
-      sAjaxSource: $('.authorTable').data('source'),
-      bLengthChange: false,
-      aaSorting: [[0, 'asc']],
-      aoColumns: [
-          null,
-          { "sWidth": "50%" }
-        ]
-    });
-  </script>
-<% end %>

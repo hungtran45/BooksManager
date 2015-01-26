@@ -30,7 +30,9 @@ private
     else
       categories.map do |category|
       [
-        link_to(category.name, category, class: 'categoryName', title: "View " + category.name + " details", "data-placement" => "bottom") 
+        link_to(category.name, category, class: 'categoryName', title: "View " + category.name + " details", "data-placement" => "bottom") ,
+        "",
+        ""
       ]
       end
     end

@@ -15,12 +15,25 @@
           <th><%= t('.title')%></th>
           <th><%= t('.year')%></th>
           <th><%= t('.category')%></th>
-          <% if current_user.has_role? :admin %>
-            <th><%= t('.select')%></th>
-            <th></th>
-          <% end %>
+          <th><%= t('.select')%></th>
+          <th></th>
         </tr>
       </thead>
+      <tfoot>
+        <tr>
+          <th class="centered">
+          </th>
+          <th class="centered">
+          </th>
+          <th class="centered">
+          </th>
+          <th class="centered">
+              <input type="text" id="id3" name="id3" class="search_init" />
+          </th>
+          <th class="centered">
+          </th>
+        </tr>
+        </tfoot>
       <tbody>
       </tbody>
     </table>
@@ -28,56 +41,3 @@
   </div>
 </div>
 
-<% if current_user.has_role? :admin %>
-  <script>
-    function renderCategory(data){
-        return '<span class="filter_category_name">'+data+'</span>';
-      }
-      click_filter = function(){
-        $('.filter_category_name').click(function(){
-          category_name = $(this).text();
-          if(category_name != ""){
-            $("#categoy_name").val(categoy_name);
-            $(".bookTable").dataTable().fnReloadAjax();
-          }
-        })
-      }
-      $(".bookTable").dataTable({
-        info: false,
-        bProcessing: true,
-        bServerSide: true,
-        sAjaxSource: $('.bookTable').data('source'),
-        bLengthChange: false,
-        aaSorting: [[1, 'asc']],
-        aoColumns: [
-            {"sWidth": "20%", "bSortable": false },
-            null,
-            {"sWidth": "10%", "bSearchable": false},
-            {"sWidth": "20%", "bSortable": false , "bSearchable": false, "mRender": renderCategory},
-            { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false, "bSearchable": false },
-            { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false, "bSearchable": false }
-          ],
-        "fnServerParams": function ( aoData ) {
-          aoData.push( { "name": "category_name", "value": $('#categoy_name').val() } );
-        }
-        });
-      
-  </script>
-  <% else %>
-  <script >
-    $(".bookTable").dataTable({
-      info: false,
-      bProcessing: true,
-      bServerSide: true,
-      sAjaxSource: $('.bookTable').data('source'),
-      bLengthChange: false,
-      aaSorting: [[1, 'asc']],
-      aoColumns: [
-          {"sWidth": "20%", "bSortable": false },
-          null,
-          {"sWidth": "10%", "bSearchable": false},
-          {"sWidth": "20%", "bSortable": false , "bSearchable": false}
-        ]
-      });
-  </script>
-<% end %>

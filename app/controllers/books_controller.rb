@@ -65,6 +65,7 @@ class BooksController < ApplicationController
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
+    AuthorMailer.notify(@book).deliver #send email
     @book.destroy
     respond_to do |format|
       format.html { redirect_to books_url }
@@ -79,7 +80,10 @@ class BooksController < ApplicationController
     @arr_book = Book.where(:id => params[:book_ids]).pluck(:title)
     @bookCount = @arr_book.count
     @arr_book *= ', '
-    
+
+    @proc_email = Proc.new{ Book.joins(:author).where(books: {:id => params[:book_ids]}).uniq.pluck(:email)}
+
+    AuthorMailer.notify_multiple(@proc_email.call).deliver
     Book.where(:id => params[:book_ids]).destroy_all
 
     respond_to do |format|
@@ -100,11 +104,7 @@ class BooksController < ApplicationController
   end
 
   def view_by_category
-    respond_to do |format|
-      format.html
-      #add current_user de dung cho initialize cua books_datatable
-      format.json { render json: AbcDatatable.new(current_user, view_context) }
-    end
+
   end
 
   private
