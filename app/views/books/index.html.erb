@@ -11,7 +11,7 @@
     <table class="table table-striped table-hover table-responsive table-bordered bookTable display" data-source="<%= books_url(format: "json") %>">
       <thead>
         <tr>
-          <th><%= t('.author')%></th>
+          <th class="as"><%= t('.author')%></th>
           <th><%= t('.title')%></th>
           <th><%= t('.year')%></th>
           <th><%= t('.category')%></th>
@@ -19,23 +19,18 @@
           <th></th>
         </tr>
       </thead>
+      <tbody>        
+      </tbody>
       <tfoot>
         <tr>
-          <th class="centered">
-          </th>
-          <th class="centered">
-          </th>
-          <th class="centered">
-          </th>
-          <th class="centered">
-              <input type="text" id="id3" name="id3" class="search_init" />
-          </th>
-          <th class="centered">
-          </th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th id="filterCategory"></th>
+          <th></th>
+          <th></th>
         </tr>
-        </tfoot>
-      <tbody>
-      </tbody>
+      </tfoot>
     </table>
     <% end %>
   </div>

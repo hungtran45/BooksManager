@@ -3,13 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-	$(".bookTable").dataTable
+	$(".bookTable").dataTable({
         info: false
         bProcessing: true
         bServerSide: true
         sAjaxSource: $('.bookTable').data('source')
         bLengthChange: false
         aaSorting: [[1, 'asc']]
+        bFilter: true
         aoColumns: [
             {"sWidth": "20%", "bSortable": false },
             null,
@@ -18,7 +19,18 @@ jQuery ->
             { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false, "bSearchable": false },
             { "sWidth": "8%", "sClass": "alignCenter", "bSortable": false, "bSearchable": false }
         ]
+    }).columnFilter({
+        aoColumns: [
+            null,
+            null,
+            null,
+            { 
+                type: "text"
+            },
+            null,
+            null
+        ]
+    })
 
-	$('.chxBook').click ->
-		$('.btnDelete')
-			.attr("disabled", !$('.chxBook').is(":checked"))
+	$('.bookCategory').click ->
+        alert("asd")

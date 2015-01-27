@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require dataTables/jquery.dataTables
+//= require jquery.dataTables.columnFilter
 //= require_tree .
 
 jQuery(function($){
